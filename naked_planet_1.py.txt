@@ -1,0 +1,20 @@
+import numpy
+
+time_step = 100
+in_flux = 236.25
+heat_cont = 0.0
+heat_cap = 16800000000
+heat_coeff = 31400000
+es = 0.0000000567
+time_list = [0] 
+temp_list = [0.0]
+nsteps = int(input(""))
+
+i = 1
+for i in range (1,nsteps+1):
+  heat_cont = heat_cont + ((in_flux-es*pow(temp_list[i-1],4))*heat_coeff*time_step)
+  time_list.append(time_list[i-1]+time_step)
+  temp_list.append(heat_cont/heat_cap)
+  i = i + 1
+
+print(temp_list[-1],(es*pow(temp_list[-1],4)))
